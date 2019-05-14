@@ -9,13 +9,14 @@ from database import users as users_db
 
 BCRYPT = Bcrypt()
 REDIRECT_URL = 'common.index'
-LOGIN_TEMPLATE = 'login.html'
+LOGIN_TEMPLATE = 'auth/login.html'
 
 
 class WebLoginView(MethodView):
     """
     Login class.
     """
+
     def get(self):
         """
         Render login html template.
@@ -49,6 +50,7 @@ class WebLogoutView(MethodView):
     """
     Logout class.
     """
+
     def get(self):
         """
         Clear session storage. Redirect to home.

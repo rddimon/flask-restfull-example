@@ -5,7 +5,6 @@ import os
 import datetime
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_DIR = '{}/{}'.format(BASE_DIR, 'static')
 DEFAULT_SECRET_KEY = 'Pikachu'
 
 
@@ -16,7 +15,6 @@ class Config(object):
     DEBUG = False
 
     BASE_DIR = BASE_DIR
-    STATIC_DIR = STATIC_DIR
 
     SECRET_KEY = os.environ.get('SECRET_KEY', DEFAULT_SECRET_KEY)
 
