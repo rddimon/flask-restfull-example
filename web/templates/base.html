@@ -1,14 +1,14 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - Test</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('web.static', filename='css/style.css') }}">
 <nav>
   <h1>Test auth</h1>
   <ul>
     {% if g.user %}
       <li><span>USER: {{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+      <li><a href="{{ url_for('web.logout') }}">Log Out</a>
     {% else %}
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+      <li><a href="{{ url_for('web.login') }}">Log In</a>
     {% endif %}
   </ul>
 </nav>

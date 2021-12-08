@@ -1,19 +1,24 @@
 """
 Blueprint registration for full 'web' module
 """
-from web.common.urls import COMMON_BLUEPRINT
-from web.auth.urls import AUTH_BLUEPRINT
+from flask import Blueprint
+from flask_lazyviews import LazyViews
 
+from web.apps.auth.urls import AUTH_URLS
+from web.apps.common.urls import COMMON_URLS
 
-def register_web_blueprints(app):
-    """
-    register urls for 'web' module
-    :param app: current Flask app
-    :return:
-    """
+WEB_BLUEPRINT = Blueprint(
+    'web', __name__,
+    static_folder='static', static_url_path='/static/web',
+    template_folder='templates'
+)
+VIEWS = LazyViews(WEB_BLUEPRINT)
 
-    # common web app views
-    app.register_blueprint(COMMON_BLUEPRINT)
+# Add new urls
+URLS = []
+URLS.extend(AUTH_URLS)
+URLS.extend(COMMON_URLS)
 
-    # auth web app views
-    app.register_blueprint(AUTH_BLUEPRINT)
+# load views
+for url_name, view_name in URLS:
+    VIEWS.add(url_name, view_name)
